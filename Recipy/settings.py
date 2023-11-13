@@ -79,12 +79,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'recipy_database',
+        'NAME': 'railway',
         'USER':'root',
-        'PASSWORD':'Thusenterprise?mysql',
-        'HOST':'localhost',
-        'PORT':'3306'
-
+        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
+        'HOST':'roundhouse.proxy.rlwy.net',
+        'PORT':'24919',
     }
 }
 
@@ -133,5 +132,5 @@ STATICFILES_DIRS= [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+LOGIN_URL = 'login'  # Replace '/login/' with the desired login URL
 LOGIN_REDIRECT_URL = 'logout'

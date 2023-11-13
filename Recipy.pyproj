@@ -34,6 +34,7 @@
   <ItemGroup>
     <Compile Include="login\admin.py" />
     <Compile Include="login\apps.py" />
+    <Compile Include="login\forms.py" />
     <Compile Include="login\migrations\__init__.py" />
     <Compile Include="login\models.py" />
     <Compile Include="login\tests.py" />
@@ -50,7 +51,13 @@
   <ItemGroup>
     <Content Include="login\migrations\__pycache__\__init__.cpython-310.pyc" />
     <Content Include="login\static\css\login.css" />
+    <Content Include="login\static\images\bandejapaisa.jpg" />
+    <Content Include="login\static\images\ratatouille.jpg" />
+    <Content Include="login\static\images\recipy_icon.png" />
     <Content Include="login\templates\login\login.html" />
+    <Content Include="login\templates\login\layout.html" />
+    <Content Include="login\templates\login\feed.html" />
+    <Content Include="login\templates\login\register.html" />
     <Content Include="login\__pycache__\admin.cpython-310.pyc" />
     <Content Include="login\__pycache__\apps.cpython-310.pyc" />
     <Content Include="login\__pycache__\models.cpython-310.pyc" />
@@ -66,6 +73,7 @@
     <Folder Include="login\migrations\__pycache__\" />
     <Folder Include="login\static\" />
     <Folder Include="login\static\css\" />
+    <Folder Include="login\static\images\" />
     <Folder Include="login\templates\" />
     <Folder Include="login\templates\login\" />
     <Folder Include="login\__pycache__\" />
