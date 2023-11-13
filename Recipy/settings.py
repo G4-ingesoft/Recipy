@@ -81,12 +81,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RECIPY_DATABASE',
+        'NAME': 'railway',
         'USER':'root',
-        'PASSWORD':'123456',
-        'HOST':'localhost',
-        'PORT':'3306'
-
+        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
+        'HOST':'roundhouse.proxy.rlwy.net',
+        'PORT':'24919',
     }
 }
 
