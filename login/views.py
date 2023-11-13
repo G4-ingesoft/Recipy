@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-from .forms import UserRegistrationForm
+from .forms import *
 from django.contrib import messages
 
 # Create your views here.
@@ -20,3 +20,4 @@ def register(request):
         form = UserRegistrationForm()
     context= {'form':form}
     return render(request,'login/register.html',context)
+
