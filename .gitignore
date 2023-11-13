@@ -1,6 +1,7 @@
-Recipy.pyproj
-Recipy.pyproj.user
-Recipy.sln
-db.sqlite3
-
-
+/Recipy.pyproj
+/Recipy.pyproj.user
+/Recipy.sln
+/db.sqlite3
+/.vs/
+/env/
+/obj/
