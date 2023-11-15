@@ -15,6 +15,13 @@ import pymysql
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from os import path, environ
+from sys import path as sys_path
+from django import setup
+
+sys_path.append('./Recipy/settings.py')    
+environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings')
+setup()
 
 
 
@@ -39,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login'
+    'login',
+    'profiles'
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-from .forms import UserRegistrationForm, ProfileUpdateForm
+from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -56,7 +56,3 @@ def register(request):
 def feed(request):
     return render(request,'login/feed.html')
 
-@login_required
-def profile(request):
-    p_form = ProfileUpdateForm()
-    return render(request, 'profile/edit_profile.html')

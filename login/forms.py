@@ -1,12 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField()
-    password1 = forms.CharField(label='contraseña',widget=forms.PasswordInput)
-    password2 = forms.CharField(label=' confirma contraseña',widget=forms.PasswordInput)
+    password1 = forms.CharField(label='contrasena',widget=forms.PasswordInput)
+    password2 = forms.CharField(label=' confirma contrasena',widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -18,7 +17,3 @@ class UserRegistrationForm(UserCreationForm):
             #self.fields['email'].widget.attrs.update({'my_attribute_key':'my_attribute_value'})
 
 
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['description','image']
