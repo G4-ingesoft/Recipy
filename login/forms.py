@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField()
-    password1 = forms.CharField(label='contrasena',widget=forms.PasswordInput)
-    password2 = forms.CharField(label=' confirma contrasena',widget=forms.PasswordInput)
+    password1 = forms.CharField(label='contraseña',widget=forms.PasswordInput)
+    password2 = forms.CharField(label=' confirma contraseña',widget=forms.PasswordInput)
 
     class Meta:
         model = User
