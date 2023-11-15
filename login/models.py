@@ -6,14 +6,15 @@ from django.db.models.signals import post_save
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='images/user_defect.png')
+    description = models.TextField(default='<Descripción no añadida, puedes agregarla editando el perfil>')
     def __str__(self):
         return f'Perfil de {self.user.username}'
     
 
 
-#def create_profile(sender,instance,created,**kwargs):
- #   if created:
-  #      Profile.objects.create(user=instance)
+def create_profile(sender,instance,created,**kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
 
-#post_save.connect(create_profile,sender=User)
+post_save.connect(create_profile,sender=User)

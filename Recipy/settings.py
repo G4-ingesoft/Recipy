@@ -81,11 +81,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
+        'NAME': 'RECIPY_DATABASE',
         'USER':'root',
-        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
-        'HOST':'roundhouse.proxy.rlwy.net',
-        'PORT':'24919',
+        'PASSWORD':'.33mnpdU123.',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
@@ -142,5 +142,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'edit_profile'
 
