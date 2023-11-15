@@ -51,6 +51,3 @@ def register(request):
 
     return render(request, 'login/register.html')  # Adjust the template path accordingly
 
-@login_required
-def feed(request):
-    return render(request,'login/feed.html')
