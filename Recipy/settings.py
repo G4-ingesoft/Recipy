@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'profiles',
+    'post'
 ]
 
 MIDDLEWARE = [
@@ -82,14 +83,13 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RECIPY_DATABASE',
+        'NAME': 'railway',
         'USER':'root',
-        'PASSWORD':'.33mnpdU123.',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
+        'HOST':'roundhouse.proxy.rlwy.net',
+        'PORT':'24919',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
