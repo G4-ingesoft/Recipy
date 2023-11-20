@@ -4,10 +4,9 @@ from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth import login
 
 # Create your views here.
-def login(request):
-    return render(request,'login/login.html')
 
 
 #def register(request):
@@ -46,7 +45,9 @@ def register(request):
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             messages.success(request, 'Account created successfully. You can now log in.')
-            return redirect('login')  # Redirect to the login page
+
+            login(request,user)
+            return redirect('create_profile')  # Redirect to the login page
         except Exception as e:
             messages.error(request, f'Error creating account: {e}')
 
