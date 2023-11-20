@@ -7,6 +7,11 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
-def profile(request):
+def edit_profile(request):
     p_form = ProfileUpdateForm()
     return render(request, 'profile/edit_profile.html')
+
+@login_required
+def profile(request):
+  #  p_form = ProfileUpdateForm()
+    return render(request, 'profile/view_profile.html')

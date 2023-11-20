@@ -81,14 +81,22 @@ WSGI_APPLICATION = 'Recipy.wsgi.application'
 
 pymysql.install_as_MySQLdb()
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER':'root',
-        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
-        'HOST':'roundhouse.proxy.rlwy.net',
-        'PORT':'24919',
-    }
+   'default': {
+ #       'ENGINE': 'django.db.backends.mysql',
+ #       'NAME': 'railway',
+ #       'USER':'root',
+ #       'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
+ #       'HOST':'roundhouse.proxy.rlwy.net',
+ #       'PORT':'24919',
+ #   }
+
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME':'RECIPY_DATABASE',
+    'USER':'root',
+    'PASSWORD':'123456',
+    'HOST':'127.0.0.1',
+    'PORT':'3306',
+   }
 }
 
 # Password validation
