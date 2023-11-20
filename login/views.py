@@ -33,12 +33,12 @@ def register(request):
         # Check if passwords match
         if password != confirm_password:
             messages.error(request, 'Las contrasenas no coinciden')
-            return redirect('register_user')  # Redirect to the registration page
+            return redirect('register')  # Redirect to the registration page
 
         # Check if the terms and conditions are agreed
         if not agree_terms:
             messages.error(request, 'Please agree to the terms and conditions.')
-            return redirect('register_user')  # Redirect to the registration page
+            return redirect('register')  # Redirect to the registration page
 
         # Create a new user
         try:
