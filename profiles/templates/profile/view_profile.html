@@ -90,25 +90,25 @@
   <div class="container profile-container">
 
     <!-- Avatar de usuario -->
-    <img src="{{ user.profile.image.url }}" alt="Avatar de usuario" class="profile-avatar mx-auto d-block">
+    <img src="{{ user_profile.image.url }}" alt="Avatar de usuario" class="profile-avatar mx-auto d-block">
 
     <!-- Detalles del usuario -->
     <div class="user-details">
-      <h1>Anndres</h1>
+      <h1>{{ user_profile.user.username }}</h1>
     </div>
 
     <!-- Biografía del usuario -->
     <div class="user-bio">
-      <p>🍔 Explorando el mundo a través del sabor 🌎✨ ¡Hola, foodies! Soy Andres, tu guía culinaria en esta deliciosa travesía. 👩‍🍳 Desde platos caseros reconfortantes hasta descubrimientos gastronómicos en la ciudad, estoy aquí para compartir mi amor por la buena comida.</p>
+      <p>{{ user_profile.description }}</p>
     </div>
 
     <!-- Sección de Seguir/Seguidores -->
     <div class="follow-section">
-      <a href="/user/following" class="text-decoration-none">
+      <a href="#" class="text-decoration-none">
         <span class="fw-bold">69</span>
         <span>Siguiendo</span>
       </a>
-      <a href="/user/followers" class="text-decoration-none">
+      <a href="#" class="text-decoration-none">
         <span class="fw-bold">58</span>
         <span>Seguidores</span>
       </a>
@@ -138,30 +138,30 @@
       <div class="card-body">
         <div class="container mt-4">
           <div class="row">
-            {% for guia in receta %}
+            {% for receta in user_recipes %}
               <div class="col-md-12 mb-4">
                 <div class="card" style="border: 2px solid #ff6f61; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #bbebd6;">
                   <div class="row">
                     <!-- Imagen (más pequeña) -->
                     <div class="col-md-3">
-                      <img src="{{ guia.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" alt="...">
+                      <img src="{{ receta.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" alt="...">
                     </div>
 
                     <!-- Detalles de la receta -->
                     <div class="col-md-9">
                       <div class="card-body">
-                        <h5 class="username mb-2" style="color: #2f4f4f;">{{ guia.user.username }}</h5>
-                        <h5 class="username mb-4" style="color: #2f4f4f;">{{ guia.name }}</h5>
+                        <h5 class="username mb-2" style="color: #2f4f4f;">{{ receta.user.user.username }}</h5>
+                        <h5 class="username mb-4" style="color: #2f4f4f;">{{ receta.name }}</h5>
 
                         <!-- Subcard para el tiempo -->
                         <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
                           <i class="fas fa-clock mr-2" style="color: #696969;"></i>
-                          <time datetime="{{ guia.timestamp }}" style="color: #696969;">{{ guia.timestamp }}</time>
+                          <time datetime="{{ receta.timestamp }}" style="color: #696969;">{{ receta.timestamp }}</time>
                         </div>
 
                         <!-- Subcard para el contenido -->
                         <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
-                          <p style="color: #2f4f4f;">{{ guia.content }}</p>
+                          <p style="color: #2f4f4f;">{{ receta.content }}</p>
                         </div>
 
                         <!-- Subcard para el botón -->

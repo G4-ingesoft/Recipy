@@ -3,38 +3,83 @@
 
 {% block content %}
 
-    <div class="content-section">
-      <div class="media">
+<a href="{% url 'view_profile' %}" class="btn btn-dark mt-3">Volver</a>
+<div class="content-section">
+    <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">{{ user.profile.description }}</p>
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p class="text-secondary">{{ user.profile.description }}</p>
         </div>
-      </div>
     </div>
-    <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                      <fieldset class="form-group">
-                                          <legend class="border-bottom mb-4">Profile Info</legend>
-                                          <div class="form-group">
-                                              <label for="description">Description:</label>
-                                              <textarea class="form-control" id="description" name="description" rows="3">{{ profile.description }}</textarea>
-                                          </div>
-                                          <div class="form-group">
-                                              <label for="image">Upload Image:</label>
-                                              <input type="file" class="form-control-file" id="image" name="image">
-                                          </div>
-                                      </fieldset>
-                                <div class="form-group">
-                                    <button class="btn btn-outline-info" type="submit">Actualizar perfil</button>
-                                    <button class="btn btn-outline-info" type="submit">Omitir paso</button>
-                                </div>
-                            </form>
+</div>
+
+<div class="panel-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <form method="POST" enctype="multipart/form-data" id="updateProfileForm">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile Info</legend>
+
+                    <!-- Contenido del formulario ... -->
+
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Upload Image</legend>
+
+                    <div class="form-group">
+                        <label for="image">Choose Image:</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
                         </div>
                     </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <a href="#" class="btn btn-primary" onclick="return confirmarActualizacion()">Actualizar perfil</a>
                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmarActualizacion() {
+        // Muestra una alerta de confirmación
+        var confirmacion = confirm("¿Estás seguro de que quieres actualizar tu perfil?");
+
+        // Si el usuario hace clic en "Aceptar", redirige a la URL de actualización
+        if (confirmacion) {
+            window.location.href = "{% url 'view_profile' %}";
+        }
+
+        // Devuelve false para evitar que el enlace siga su comportamiento predeterminado
+        return false;
+    }
+</script>
+
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .account-img {
+        margin-right: 20px; /* Adjust as needed */
+    }
+
+    .account-heading {
+        margin-bottom: 10px;
+    }
+</style>
+
 {% endblock content %}
