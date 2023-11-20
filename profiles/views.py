@@ -10,8 +10,21 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def edit_profile(request):
-    p_form = ProfileUpdateForm()
-    return render(request, 'profile/edit_profile.html')
+    if request.method == 'POST':
+        # Si la solicitud es un POST, procesa el formulario de actualización del perfil
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            return redirect('view_profile')  # Reemplaza 'view_profile' con la URL a la que deseas redirigir después de editar el perfil
+
+    else:
+        # Si la solicitud no es un POST, crea una instancia del formulario con la información actual del perfil
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    # Renderiza la plantilla con el formulario como parte del contexto
+    return render(request, 'profile/edit_profile.html', {'p_form': p_form})
+
+
 
 @login_required
 def profile(request):
@@ -27,12 +40,3 @@ def profile(request):
     }
 
     return render(request, 'profile/view_profile.html', context)
-
-@login_required
-def delete_profile(request):
-    if request.user.is_authenticated and request.method == 'POST':
-        request.user.delete()  
-        return redirect('register')  # Reemplaza 'home' con la URL a la que deseas redirigir
-    else:
-        # Manejar el caso en el que el usuario no está autenticado o no está utilizando el método POST
-        return redirect('login')  # Reemplaza 'login' con la URL de tu página de inicio de sesión

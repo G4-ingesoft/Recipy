@@ -1,74 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Registration Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/styles_signup.css">
+{% extends 'layout.html' %}
 
-
-</head>
-<body>
-    {% load static %}
-    <div class="logo-container">
-        <a href="{% url 'login' %}" class="back-button">Volver</a>
-        <div class="row"><img src="../../static/images/recipy_icon.png" class="logo-img mx-auto" alt="Your Logo"></div>
-        <div class="row"><img src="../../static/images/recipy_logo_white.png" class="logo-img mx-auto" alt="Your Logo"></div>
+{% block content %}
+    <a href="{% url 'view_profile' %}" class="btn btn-dark mt-3">Volver</a>
+    <div class="content-section mt-4">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="{{ user.username }}'s Profile Image">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+                <p class="text-secondary">{{ user.profile.description }}</p>
+            </div>
+        </div>
     </div>
 
-    <div class="card-container">
-        <div class="card">
-            <h5 class="card-header">Regístrate</h5>
-            <div class="card-body">
-                <h5 class="card-title">Ingresa tus datos</h5>
-                <form class="row g-3" method="post" action="{% url 'register' %}">
+    <div class="panel-body mt-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <form method="POST" enctype="multipart/form-data" id="updateProfileForm" class="profile-form">
                     {% csrf_token %}
+                    <fieldset class="form-group border rounded p-4">
+                        <legend class="border-bottom mb-4">Editar Perfil</legend>
+                        {{ p_form.username.label_tag }}
+                        {{ p_form.username }}
+                        {{ p_form.email.label_tag }}
+                        {{ p_form.email }}
+                        {{ p_form.profile.description.label_tag }}
+                        {{ p_form.profile.description }}
+                    </fieldset>
 
-                    <div class="col-md-12">
-                        <label for="id_username" class="form-label">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="id_username" name="username" required>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="id_email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="id_email" name="email" required>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="id_password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="id_password" name="password" required>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="id_confirm_password" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="id_confirm_password" name="confirm_password" required>
-                    </div>
-
-                    <!-- Other address-related fields remain unchanged -->
-
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck" name="agree_terms" required>
-                            <label class="form-check-label" for="gridCheck">
-                                Acepto los términos y condiciones de Recipy
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-signup">Registrarme</button>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg" type="submit" onclick="return confirmarActualizacion()">Actualizar perfil</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="/login.js"></script>
+    <script>
+        function confirmarActualizacion() {
+            // Muestra una alerta de confirmación
+            var confirmacion = confirm("¿Estás seguro de que quieres actualizar tu perfil?");
 
-</body>
-</html>
+            // Si el usuario hace clic en "Aceptar", envía el formulario
+            return confirmacion;
+        }
+    </script>
+
+    <style>
+        .content-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .account-img {
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .account-heading {
+            margin-bottom: 10px;
+        }
+
+        .profile-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .profile-form .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-form button[type="submit"] {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .profile-form button[type="submit"]:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Estilos para hacer el textarea más pequeño */
+        .profile-form textarea {
+            height: 100px; /* Ajusta la altura según tus necesidades */
+            resize: none; /* Evita que se pueda redimensionar */
+        }
+    </style>
+{% endblock content %}
