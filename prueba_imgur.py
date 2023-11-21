@@ -18,4 +18,4 @@ ruta_abs = path.abspath(ruta)
 print(ruta_abs)
 
 var = client.upload_from_path(ruta_abs, config=None, anon=False)
-print(var)
+print(var['link'])
