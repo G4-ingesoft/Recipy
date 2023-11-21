@@ -2,51 +2,100 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} - Recipy</title>
-    {% load static %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+     {% load static %} 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../static/css/layout.css" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg" style="background-color: #0ef1a5;">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg justify-content-center">
+        <div class="container-fluid justify-content-center">
             <a class="navbar-brand" href="#">
-                <img src="../static/images/recipy_icon.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-                <img src="../static/images/recipy_logo.png" alt="Logo" width="200" height="40" class="d-inline-block align-text-top">
+                <img src="https://i.imgur.com/Btpn29Y.png"
+                     alt="Logo"
+                     width="40"
+                     height="40"
+                     class="d-inline-block align-text-top" />
+                <img src="https://i.imgur.com/RTMyd42.png"
+                     alt="Logo"
+                     width="200"
+                     height="40"
+                     class="d-inline-block align-text-top" />
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                    <!-- Los items de la barra van aquí -->
+                    <li class="nav-item ms-5">
+                        <a class="nav-icon-btn" aria-current="page" href="#">
+                            <ion-icon name="fast-food-sharp"></ion-icon>
+                            <span>Recetas</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item ms-5">
+                        <a class="nav-icon-btn" aria-current="page" href="#">
+                            <ion-icon name="reader-sharp"></ion-icon>
+                            <span>Menús</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-5">
+                        <a class="nav-icon-btn" aria-current="page" href="#">
+                            <ion-icon name="star-sharp"></ion-icon>
+                            <span>Recetas favoritas</span>
+                        </a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="d-flex ms-auto me-auto">
+                    <form class="d-flex">
+                        <input class="form-control search-input"
+                               type="search"
+                               placeholder="Buscar"
+                               aria-label="Search" />
+                        <button class="btn custom-button" type="submit">
+                            <ion-icon name="search-sharp"></ion-icon>
+                        </button>
+                    </form>
+                </div>
+                <a onclick="toggleMenu()" class="rounded-button">
+                    <ion-icon name="person-sharp"></ion-icon>
+                </a>
+
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            <ion-icon size="large" name="person-circle-sharp"></ion-icon>
+                            <h4>Acceder a Recipy</h4>
+                        </div>
+                        <a href="#" class="sub-menu-link">
+                            <!-- Añadir opciones -->
+                            <!-- <ion-icon size="large" name="settings-sharp"></ion-icon>
+                            <p>Editar perfil</p>
+                            <span>></span> -->
+                        </a>
+                        <div class="row">
+                            <a class="btn btn-acc-redirect">Iniciar sesión</a>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-acc-redirect">Registrarte</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -54,13 +103,45 @@
     <div class="container body-content">
         {% block content %}{% endblock %}
         <hr />
-        <footer>
-            <p>&copy; {{ year }} - Recipy</p>
-        </footer>
     </div>
+    
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Recipy</h4>
+                        <ul>
+                            <li><a href="#">Quiénes somos</a></li>
+                            <li><a href="#">Nuestra misión</a></li>
+                            <li><a href="#">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Síguenos</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <p><small class="footer-cpy">&copy; - 2023 - Recipy</small></p>
+                </div>
+            </div>
+        </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    {% block scripts %}{% endblock %}
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                crossorigin="anonymous"></script>
+        <script type="module"
+                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="../../static/js/toggle-account.js"></script>
 
+        {% block scripts %}{% endblock %}
 </body>
 </html>

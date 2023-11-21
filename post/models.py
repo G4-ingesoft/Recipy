@@ -6,7 +6,6 @@ from django.utils import timezone
 from datetime import timedelta
 
 from profiles.models import Profile
-import requests
 
 # Create your models here.
 class Receta(models.Model):
