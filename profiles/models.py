@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='images/user_defect.jpeg')
+    image = models.CharField(max_length=255)
     description = models.TextField(default=' ')
     def __str__(self):
         return f'Perfil de {self.user.username}'
