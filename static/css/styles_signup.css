@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:login/static/css/styles_signup.css
 body {
     background: linear-gradient(to bottom, #8ED081, #546A70);
@@ -147,3 +148,88 @@ body {
         background-color: #32424A; /* Cambia el color de fondo al pasar el mouse sobre el botón */
     }
 >>>>>>> 798f1a8d5b67cb28e83e9232b20f1e4bf94b0f35:static/css/styles_signup.css
+=======
+body {
+    background: linear-gradient(to bottom, #8ED081, #546A70);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.logo-container,
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    flex: 1;
+}
+
+.logo-img {
+    max-width: 50%;
+    max-height: 50%;
+    height: auto;
+    width: auto;
+}
+
+.card-container {
+    flex: 1;
+}
+
+.card {
+    width: 500px;
+    background-color: #f8f9fa !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa !important;
+    align-items: center;
+}
+
+.btn-signup {
+    background-color: #ff8c00;
+    color: #ffffff; /* Color del texto del botï¿½n */
+    border-inline-color: #ff8c00;
+}
+
+    .btn-signup:hover {
+        background-color: #32424A; /* Cambia el color de fondo al pasar el mouse sobre el botï¿½n */
+    }
+
+.btn-login {
+    background-color: #ff8c00;
+    color: #ffffff; /* Color del texto del botï¿½n */
+    border-inline-color: #ff8c00;
+}
+
+    .btn-login:hover {
+        background-color: #32424A; /* Cambia el color de fondo al pasar el mouse sobre el botï¿½n */
+    }
+
+/* Estilos para el botï¿½n de regreso */
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #ff8c00; /* Color de fondo del botï¿½n */
+    border-color: #ff8c00;
+    color: #ffffff; /* Color del texto del botï¿½n */
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+}
+
+    .back-button:hover {
+        background-color: #32424A; /* Cambia el color de fondo al pasar el mouse sobre el botï¿½n */
+    }
+>>>>>>> 08610166c5ca3b5c7881c2827738a3e25e24c619

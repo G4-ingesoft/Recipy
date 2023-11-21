@@ -1,0 +1,10 @@
+asgiref==3.7.2
+Django==4.2.7
+PyMySQL==1.1.0
+sqlparse==0.4.4
+<<<<<<< HEAD:requeriments.txt
+typing_extensions==4.8.0
+=======
+typing_extensions==4.8.0
+pillow==10.1.0
+>>>>>>> 08610166c5ca3b5c7881c2827738a3e25e24c619:requirements.txt

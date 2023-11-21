@@ -3,8 +3,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from django.utils import timezone
+from datetime import timedelta
 
 from profiles.models import Profile
+import requests
 
 # Create your models here.
 class Receta(models.Model):
@@ -12,7 +14,10 @@ class Receta(models.Model):
     name = models.CharField(default="no name", max_length=100)
     image = models.ImageField(default='images/Receta_defect.png')
     timestamp = models.DateTimeField(default=timezone.now)
-    content= models.TextField()
+    prep_time = models.DurationField(default=timedelta(hours=0, minutes=00)) # Tiempo de preparación, tipo 1:00:30
+    description = models.TextField(default="Sin descripción.")
+    ingredients = models.TextField(default="Sin ingredientes.")
+    steps = models.TextField(default="Sin pasos de preparación.")
     
 
     class Meta:
