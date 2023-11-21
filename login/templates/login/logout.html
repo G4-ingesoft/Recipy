@@ -1,13 +1,11 @@
-
 {% extends 'layout.html' %}
-
 
 {% block content %}
 <form class="form" method="post">
     {% csrf_token %}
     {{ form.as_p}}
 
-   <h1>Te haz logeado</h1>
+   <h1>Te has logueado</h1>
 </form>
 
 {% endblock %}

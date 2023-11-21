@@ -4,6 +4,7 @@ from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 def login(request):
     return render(request,'login/login.html')
@@ -54,3 +55,4 @@ def register(request):
 @login_required
 def feed(request):
     return render(request,'login/feed.html')
+

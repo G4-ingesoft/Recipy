@@ -1,0 +1,50 @@
+
+
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+{% for guia in receta %}
+<div class="container">
+    <div class="row">
+        <!-- Primera card -->
+        <div class="col-md-6 mb-4">
+            <div class="card" style="border: 2px solid #ff6f61; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #ffebcd;">
+                <div class="card-body text-center">
+                    <h5 class="username mb-2" style="color: #2f4f4f;">{{ guia.user.username }}</h5>
+                    <h5 class="username mb-4" style="color: #2f4f4f;">{{ guia.name }}</h5>
+
+                    <!-- Subcard para el tiempo -->
+                    <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                        <i class="fas fa-clock mr-2" style="color: #696969;"></i>
+                        <time datetime="{{ guia.timestamp }}" style="color: #696969;">{{ guia.timestamp }}</time>
+                    </div>
+
+                    <!-- Subcard para el contenido -->
+                    <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                        <p style="color: #2f4f4f;">{{ guia.content }}</p>
+                    </div>
+
+                    <!-- Subcard para el botón -->
+                    <div class="subcard">
+                        <a href="#" class="btn btn-warning btn-sm mt-3">Seleccionar receta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segunda card para la imagen (más pequeña) -->
+        <div class="col-md-6 mb-4">
+            <div class="card" style="border: 2px solid #4CAF50; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 200px;">
+                <img src="{{ guia.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-top-right-radius: 8px;" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endfor %}
+
+{% endblock %}
