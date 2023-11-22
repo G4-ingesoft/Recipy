@@ -7,14 +7,14 @@ from os import path
 #client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 ##UploadImage retorna el ID
-def UploadImage(image): 
+def upload_image_imgur(image): 
     client_id = '921f4adb2a271b1'
     client_secret = 'a6387bb7caa543354d5a464692b1d0bb37473de4'
     client = ImgurClient(client_id, client_secret)
     ruta_abs = path.abspath(image)
     try:
-        image_id = client.upload_from_path(ruta_abs, config=None, anon=False)['id']
-        return image_id
+        image_link = client.upload_from_path(ruta_abs, config=None, anon=False)['link']
+        return image_link
     except ImgurClientError as e:
         print(e.error_message)
         print(e.status_code)
@@ -22,7 +22,8 @@ def UploadImage(image):
         print(e)
 
 ##GetImage obtiene la imagen
-def GetImage(image_id):
+"""
+def get_image_imgur(image_id):
     client_id = '921f4adb2a271b1'
     client_secret = 'a6387bb7caa543354d5a464692b1d0bb37473de4'
     client = ImgurClient(client_id, client_secret)
@@ -34,6 +35,4 @@ def GetImage(image_id):
         print(e.status_code)
     except ImgurClientRateLimitError as e:
         print(e)
-
-#print(id := UploadImage("imagen.jpg"))
-print(str(GetImage("lF1ikCo")))
+"""
