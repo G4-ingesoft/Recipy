@@ -23,12 +23,8 @@ class ProfileCreateForm(forms.ModelForm):
 
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3}),  # Ajusta el número de filas según tus necesidades
+            'image': forms.FileInput()
         }
-
-
-    def __init__(self, *args, **kwargs):
-        super(ProfileCreateForm, self).__init__(*args, **kwargs)
-        self.fields['image'].widget = forms.FileInput()
 
     def as_table(self):
         return self._html_output(
