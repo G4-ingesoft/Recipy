@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'profiles',
-    'post'
+    'post',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +93,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME':'RECIPY_DATABASE',
     'USER':'root',
-    'PASSWORD':'123456',
+    'PASSWORD':'.33mnpdU123.',
     'HOST':'127.0.0.1',
     'PORT':'3306',
    }
