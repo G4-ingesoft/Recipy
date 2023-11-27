@@ -3,8 +3,14 @@
 
 <div class="container mt-4">
     <div class="row">
+        <!-- Primeras tres columnas en blanco -->
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+
         {% for guia in receta %}
-        <div class="col-md-12 mb-4">
+        <!-- Seis columnas para el contenido de las recetas -->
+        <div class="col-md-6 mb-4">
             <div class="card" style="border: 2px solid #ff6f61; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #bbebd6;">
                 <div class="row">
                     <!-- Imagen (más pequeña) -->
@@ -39,6 +45,11 @@
             </div>
         </div>
         {% endfor %}
+
+        <!-- Últimas tres columnas en blanco -->
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 
