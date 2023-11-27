@@ -1,5 +1,52 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<!-- Acá va la vista de recetas guardadas -->
+<!-- Barra de búsqueda y navegación -->
+<div class="container-fluid bg-dark text-light p-3">
+  <!-- Aquí puedes incluir tu barra de búsqueda y navegación -->
+  <h1>Recetas Guardadas</h1>
+</div>
+
+<!-- Lista de recetas guardadas -->
+<div class="container mt-4">
+  <div class="row">
+    {% for receta in saved_recipes %}
+      <div class="col-md-12 mb-4">
+        <div class="card" style="background-color: #d9d9d9;">
+          <div class="row">
+            <!-- Imagen (más pequeña) -->
+            <div class="col-md-3">
+              <img src="{{ receta.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" alt="...">
+            </div>
+
+            <!-- Detalles de la receta -->
+            <div class="col-md-9">
+              <div class="card-body">
+                <h5 class="username mb-2" style="color: #2f4f4f;">{{ receta.user.user.username }}</h5>
+                <h5 class="username mb-4" style="color: #2f4f4f;">{{ receta.name }}</h5>
+
+                <!-- Subcard para el tiempo -->
+                <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                  <i class="fas fa-clock mr-2" style="color: #696969;"></i>
+                  <time datetime="{{ receta.timestamp }}" style="color: #696969;">{{ receta.timestamp }}</time>
+                </div>
+
+                <!-- Subcard para el contenido -->
+                <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                  <p style="color: #2f4f4f;">{{ receta.description }}</p>
+                </div>
+
+                <!-- Subcard para el botón -->
+                <div class="subcard">
+                  <a href="#" class="btn btn-warning btn-sm mt-3">Seleccionar receta</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock content %}
