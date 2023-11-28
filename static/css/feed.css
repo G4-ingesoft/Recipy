@@ -1,0 +1,180 @@
+.btn-primario {
+    color: white;
+    background-color: #276f65;
+  }
+  
+  .btn-icon {
+    width: fit-content;
+    height: fit-content;
+    background-color: none;
+    color: #276f65;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  
+  .btn-icon:hover {
+    color: #f48421;
+  }
+  
+  .btn-primario:hover {
+    color: white;
+    background-color: #f48421;
+  }
+  /* Create three unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+    height: max-content;
+  }
+  
+  .left, .right {
+    width: 25%;
+  }
+  
+  .middle {
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .card-text {
+    font-family: 'Jost', sans-serif;
+    color: #276f65;
+  }
+  .card-title {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    color: #276f65;
+  }
+  
+  .card-header{
+    background-color: #bbebd6;
+  }
+  
+  .card-title{
+    margin-top: 6px;
+  }
+  
+  .card-body {
+    background-color: #bbebd6;
+  }
+  
+  .card-footer {
+    background-color: #bbebd6;
+    font-family: 'Jost', sans-serif;
+    color: #276f65;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff; /* Bootstrap primary color, change as needed */
+  }
+  
+  .card img {
+    border-radius: 0%;
+  }
+  
+  .image-frame {
+    width: 100%; /* Set the desired width */
+    height: 500px; /* Set the desired height */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .image-frame .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .image-frame img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    
+    /* blurring */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .ratings{
+    margin-right:10px;
+  }
+  
+  .ratings i{
+    
+    color:#9c9c9c;
+    font-size:32px;
+  }
+  
+  .rating-color{
+    color:#ebb92f !important;
+  }
+  
+  .review-count{
+    font-weight:400;
+    margin-bottom:2px;
+    font-size:24px !important;
+  }
+  
+  .small-ratings i{
+  color:#cecece;   
+  }
+  
+  .review-stat{
+    font-weight:300;
+    font-size:18px;
+    margin-bottom:2px;
+  }
+  
+  .card-tags {
+    background-color: #bbebd6;
+    padding: 5px;
+  }
+  
+  .badge-recipe {
+    background-color: #f48421; /* Replace with your desired color */
+    color: #fff; /* Text color for better contrast */
+  }
+  
+  .prof-icon-btn {
+    width: fit-content;
+    height: fit-content;
+    background-color: none;
+    color: #276f65;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  
+  .prof-icon-btn:hover {
+    color: #f48421;
+  }
+  .prof-icon-btn span {
+    margin-left: 5px; /* Adjust the margin as needed to create space between icon and text */
+  }
