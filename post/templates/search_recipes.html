@@ -69,6 +69,19 @@
                   </div>
                 </div>
               {% endfor %}
+              {% for profile in profiles %}
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
+                        <!-- Agrega otros detalles del perfil si es necesario -->
+                        <div class="subcard">
+                            <a href="#" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
             </div>
           </div>
         </div>
