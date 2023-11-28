@@ -11,3 +11,8 @@ def feed(request):
     receta = Receta.objects.all()
     context = {'receta': receta}
     return render(request,'feed.html',context)
+
+def search_recipes(request):
+    receta = Receta.objects.all()
+    context = {'receta': receta}
+    return render(request,'search_recipes.html',context)
