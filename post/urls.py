@@ -8,4 +8,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('feed', views.feed, name='feed'),
+    path('search_recipes', views.search_recipes, name='search_recipes')
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
