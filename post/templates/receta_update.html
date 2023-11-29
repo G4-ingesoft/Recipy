@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% load static %} 
+
+{% block 'title' %}Feed{% endblock %}
+
+{% block 'additional_includes' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="column left" style="background-color:#aaa;">
+      <ul class="menu_izquierdo" id="main-menu-list" >
+        <li> 
+            <a href="#" class="prof-icon-btn" data-enabled="false"> 
+                <img src="{% static 'images/lastrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Últimas recetas
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/toprecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas en tendencia
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/randomrecipe.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas aleatorias
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/favoritesrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/rankingrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Ranking Recipes
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="column middle">
+      <div class="card mb-3">
+        <div class="card-header">
+            <h3 class="card-title">Crear una nueva receta</h3>
+          </div>
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+
+                <!-- Image Field -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Adjunta una foto de tu receta</label>
+                    <input type="file" class="form-control" id="image" name="image" required>
+                </div>
+        
+                <!-- Text Fields -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre de tu receta</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="description" class="form-label">Añade una descripción a tu receta</label>
+                    <textarea type="text" class="form-control" id="description" name="description" rows="5" required></textarea>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="ingredients" class="form-label">Lista los ingredientes de tu receta</label>
+                    <textarea type="text" class="form-control" id="ingredients" name="ingredients" rows="5" required></textarea>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="steps" class="form-label">Enumera los pasos de tu receta</label>
+                    <textarea type="text" class="form-control" id="steps" name="steps" rows="5" required></textarea>
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Crear receta</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="column right" style="background-color:#ccc;">
+      <h2>Column 3</h2>
+      <p>Some text..</p>
+    </div>
+  </div>
+
+  {% endblock %}
