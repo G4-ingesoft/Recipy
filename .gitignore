@@ -173,3 +173,4 @@ cython_debug/
 /.vs/
 /env/
 /obj/
+/.vscode/
