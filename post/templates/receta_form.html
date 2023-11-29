@@ -47,40 +47,44 @@
     </div>
     <div class="column middle">
       <div class="card mb-3">
-        <form method="post" enctype="multipart/form-data" >
-            {% csrf_token %}
-            <h2>Create a New Recipe</h2>
+        <div class="card-header">
+            <h3 class="card-title">Crear una nueva receta</h3>
+          </div>
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
 
-            <!-- Image Field -->
-            <div class="mb-3">
-                <label for="imageField" class="form-label">Image</label>
-                <input type="file" class="form-control" id="imageField" name="imageField">
-            </div>
-    
-            <!-- Text Fields -->
-            <div class="mb-3">
-                <label for="textField1" class="form-label">Text Field 1</label>
-                <input type="text" class="form-control" id="textField1" name="textField1">
-            </div>
-    
-            <div class="mb-3">
-                <label for="textField2" class="form-label">Text Field 2</label>
-                <input type="text" class="form-control" id="textField2" name="textField2">
-            </div>
-    
-            <div class="mb-3">
-                <label for="textField3" class="form-label">Text Field 3</label>
-                <input type="text" class="form-control" id="textField3" name="textField3">
-            </div>
-    
-            <div class="mb-3">
-                <label for="textField4" class="form-label">Text Field 4</label>
-                <input type="text" class="form-control" id="textField4" name="textField4">
-            </div>
-    
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- Image Field -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Adjunta una foto de tu receta</label>
+                    <input type="file" class="form-control" id="image" name="image" required>
+                </div>
+        
+                <!-- Text Fields -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre de tu receta</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="description" class="form-label">Añade una descripción a tu receta</label>
+                    <textarea type="text" class="form-control" id="description" name="description" rows="5" required></textarea>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="ingredients" class="form-label">Lista los ingredientes de tu receta</label>
+                    <textarea type="text" class="form-control" id="ingredients" name="ingredients" rows="5" required></textarea>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="steps" class="form-label">Enumera los pasos de tu receta</label>
+                    <textarea type="text" class="form-control" id="steps" name="steps" rows="5" required></textarea>
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Crear receta</button>
         </form>
+        </div>
       </div>
     </div>
     <div class="column right" style="background-color:#ccc;">

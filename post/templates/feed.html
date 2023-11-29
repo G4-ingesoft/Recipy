@@ -57,7 +57,11 @@
         <div class="card-body text-center">
             <h5 class="card-title">¿Qué deliciosa idea cocinas hoy?...</h5>
             <p class="card-text">Sazona tus pensamientos con el toque irresistible de la cocina. ¡Inspira, comparte y disfruta!</p>
-            <a href="#" class="btn btn-primario">
+            {% if user.is_authenticated %}
+              <a href="{% url 'receta_create' %}" class="btn btn-primario">
+            {% else %}
+              <a href="{% url 'login' %}" class="btn btn-primario">
+            {% endif %}
               <i class="fa-solid fa-circle-plus fa-lg"></i>
               Crear receta
             </a>

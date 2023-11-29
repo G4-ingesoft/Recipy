@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.models import User
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Receta
 
 # Create your views here.
@@ -22,10 +22,15 @@ class RecetaDetailView(DetailView):
     model = Receta
     template_name = 'receta_detail.html'
 
-class RecetaCreateView(CreateView):
+class RecetaCreateView(LoginRequiredMixin, CreateView):
     model = Receta
     template_name = 'receta_form.html'
-    fields = ['name', 'image', 'description','ingredients','steps']
+    fields = ['image', 'name', 'description','ingredients','steps']
+
+    def form_valid(self, form):
+        print("Añadiendo receta")
+        form.instance.user = self.request.user.profile
+        return super().form_valid(form)
 
 
 #def search_recipes(request):
