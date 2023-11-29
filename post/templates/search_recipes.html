@@ -112,22 +112,23 @@
                 </div>
               {% endfor %}
               {% for profile in profiles %}
-            <div class="col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
-                        {% load profiles.models %}
-                        {% with user_profile=Profile.objects.filter(user=profile).first() %}
-                          <p>{{ user_profile.description }}</p>
-                        {% endwith %}
-                        <!-- Agrega otros detalles del perfil si es necesario -->
-                        <div class="subcard">
-                            <a href="{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
-                        </div>
-                    </div>
+                <div class="col-md-12 mb-4">
+                  <div class="card">
+                      <div class="card-body d-flex align-items-center">
+                          <!-- Add a circular profile picture -->
+                          <img src="{{profile.profile.imgurl}}" alt="Profile Picture" class="rounded-circle mr-2" style="width: 100px; height: 100px; margin-right: 20px;">
+                          <div>
+                              <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
+                              <h5 class="username mb-2">{{ profile.profile.description }}</h5>
+                              <!-- Agrega otros detalles del perfil si es necesario -->
+                              <div class="subcard">
+                                  <a href="{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-            </div>
-        {% endfor %}
+              {% endfor %}
             </div>
           </div>
         </div>
