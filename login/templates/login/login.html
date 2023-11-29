@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Login Page</title>
@@ -8,15 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/styles_signup.css">
+    <link rel="stylesheet" href="{% static 'css/styles_signup.css' %}">
 
 
 </head>
 <body>
     {% load static %}
     <div class="logo-container">
-        <div class="row"><img src="../../static/images/recipy_icon.png" class="logo-img mx-auto" alt="Your Logo"></div>
-        <div class="row"><img src="../../static/images/recipy_logo_white.png" class="logo-img mx-auto" alt="Your Logo"></div>
+        <div class="row"><img src="{% static 'images/recipy_icon.png' %}" class="logo-img mx-auto" alt="Your Logo"></div>
+        <div class="row"><img src="{% static 'images/recipy_logo_white.png' %}" class="logo-img mx-auto" alt="Your Logo"></div>
     </div>
 
     <div class="card-container">

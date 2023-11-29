@@ -1,5 +1,10 @@
 {% extends 'layout.html' %}
+{% load static %} 
+
 <!-- Esta es la vista de resultados de búsqueda (recetas) -->
+{% block 'additional_includes' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}" />
+{% endblock %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="es">
@@ -34,38 +39,75 @@
           <div class="container mt-4">
             <div class="row">
               {% for receta in user_recipes %}
-                <div class="col-md-12 mb-4">
-                  <div class="card" style="border: 2px solid #ff6f61; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #bbebd6;">
-                    <div class="row">
-                      <!-- Imagen (más pequeña) -->
-                      <div class="col-md-3">
-                        <img src="{{ receta.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" alt="...">
-                      </div>
-
-                      <!-- Detalles de la receta -->
-                      <div class="col-md-9">
-                        <div class="card-body">
-                          <h5 class="username mb-2" style="color: #2f4f4f;">{{ receta.user.user.username }}</h5>
-                          <h5 class="username mb-4" style="color: #2f4f4f;">{{ receta.name }}</h5>
-
-                          <!-- Subcard para el tiempo -->
-                          <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
-                            <i class="fas fa-clock mr-2" style="color: #696969;"></i>
-                            <time datetime="{{ receta.timestamp }}" style="color: #696969;">{{ receta.timestamp }}</time>
-                          </div>
-
-                          <!-- Subcard para el contenido -->
-                          <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
-                            <p style="color: #2f4f4f;">{{ receta.content }}</p>
-                          </div>
-
-                          <!-- Subcard para el botón -->
-                          <div class="subcard">
-                            <a href="#" class="btn btn-warning btn-sm mt-3">Seleccionar receta</a>
-                          </div>
-                        </div>
-                      </div>
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <div class="d-flex align-items-center">
+                      <!-- Add a circular profile picture -->
+                      <h3 class="card-title">{{ receta.name }}</h3>
+                      <!-- Title and author information -->
+                  </div>
+                  <a href="#" class="prof-icon-btn">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_300,h_300/https://www.corporatephotographerslondon.com/wp-content/uploads/2021/07/LinkedIn_profile_photo_sample_3-300x300.jpg" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                          <span class="font-weight-bold">{{ receta.user.username }}</span>
+                    </a>
+                  </div>
+                  <div class="image-frame">
+                    <div class="blur" style="background-image: url('{{ receta.imgurl }}')"></div>
+                    <img src="{{ receta.imgurl }}" />
+                  </div>
+                  <div class="card-tags text-center">
+                    <span class="badge badge-recipe">Receta</span>
+                    <span class="badge badge-recipe">Ingredientes</span>
+                    <span class="badge badge-recipe">País</span>
+                </div>
+                  <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
+          
+                    <div class="btn-div" style="padding: 20px;">
+                        <a href="#" class="btn-icon">
+                            <i class="fa-solid fa-comment fa-2xl"></i>
+                        </a>
                     </div>
+          
+                    <div class="btn-div" style="padding: 20px;">
+                      <a href="#" class="btn-icon">
+                        <i class="fa-solid fa-eye fa-2xl"></i>
+                      </a>
+                  </div>
+                    
+                
+                    <div class="ratings" style="margin: 0 20px;">
+                        <div style="text-align: center; margin-bottom: 5px;">
+                            Calificación 4/5
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+          
+                    <div class="btn-div" style="padding: 20px;">
+                      <a href="#" class="btn-icon">
+                        <i class="fa-regular fa-bookmark fa-2xl"></i>
+                      </a>
+                  </div>
+                
+                    <div class="btn-div" style="padding: 20px;">
+                        <a href="#" class="btn-icon">
+                            <i class="fa-solid fa-share-nodes fa-2xl"></i>
+                        </a>
+                    </div>
+                
+                </div>
+                
+                  <div class="card-footer text-body-secondary">
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >{{ receta.timestamp }}</small
+                      >
+                    </p>
                   </div>
                 </div>
               {% endfor %}
@@ -76,7 +118,7 @@
                         <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
                         <!-- Agrega otros detalles del perfil si es necesario -->
                         <div class="subcard">
-                            <a href="#" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                            <a href="{% url 'view_profile' profile.username %}""{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
                         </div>
                     </div>
                 </div>

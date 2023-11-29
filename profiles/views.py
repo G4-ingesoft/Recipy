@@ -5,7 +5,7 @@ from .forms import ProfileUpdateForm,ProfileCreateForm
 from post.models import Receta
 
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 @login_required
@@ -46,6 +46,23 @@ def profile(request):
     user_profile = get_object_or_404(Profile, user=request.user)
 
     # Obtener las recetas asociadas al perfil del usuario actual
+    user_recipes = Receta.objects.filter(user=user_profile)
+
+    context = {
+        'user_profile': user_profile,
+        'user_recipes': user_recipes,
+    }
+
+    return render(request, 'profile/view_profile.html', context)
+
+def view_profile(request, username):
+    # Get the user object based on the provided username
+    user = User.objects.get(username=username)
+
+    # Obtain the profile associated with the user
+    user_profile = user.profile
+
+    # Get the recipes associated with the user profile
     user_recipes = Receta.objects.filter(user=user_profile)
 
     context = {

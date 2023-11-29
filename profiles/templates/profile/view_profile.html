@@ -115,9 +115,11 @@
     </div>
 
     <!-- Enlace para editar el perfil -->
-    <div class="edit-profile-link">
-      <a href="{% url 'edit_profile' %}" class="btn btn-outline-dark">Editar Perfil</a>
-    </div>
+    {% if request.user == user_profile.user %}
+      <div class="edit-profile-link">
+        <a href="{% url 'edit_profile' %}" class="btn btn-outline-dark">Editar Perfil</a>
+      </div>
+    {% endif %}
 
   </div>
 
