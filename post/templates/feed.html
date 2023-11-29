@@ -58,22 +58,22 @@
         </div>
     </div>
     
-    {% for guia in receta %}
+    {% for receta in recetas %}
       <div class="card mb-3">
         <div class="card-header">
           <div class="d-flex align-items-center">
             <!-- Add a circular profile picture -->
-            <h3 class="card-title">{{ guia.name }}</h3>
+            <h3 class="card-title">{{ receta.name }}</h3>
             <!-- Title and author information -->
         </div>
-        <a href="{% url 'view_profile' guia.user.user.username %}" class="prof-icon-btn">
-          <img src="{{ guia.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
-                <span class="font-weight-bold">{{ guia.user.user.username }}</span>
+        <a href="{% url 'view_profile' receta.user.user.username %}" class="prof-icon-btn">
+          <img src="{{ receta.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                <span class="font-weight-bold">{{ receta.user.user.username }}</span>
           </a>
         </div>
         <div class="image-frame">
-          <div class="blur" style="background-image: url('{{ guia.imgurl }}')"></div>
-          <img src="{{ guia.imgurl }}" />
+          <div class="blur" style="background-image: url('{{ receta.imgurl }}')"></div>
+          <img src="{{ receta.imgurl }}" />
         </div>
         <div class="card-tags text-center">
           <span class="badge badge-recipe">Receta</span>
@@ -125,7 +125,7 @@
         <div class="card-footer text-body-secondary">
           <p class="card-text">
             <small class="text-body-secondary"
-              >{{ guia.timestamp }}</small
+              >{{ receta.timestamp }}</small
             >
           </p>
         </div>

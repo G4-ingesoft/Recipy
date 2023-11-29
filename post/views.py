@@ -6,19 +6,19 @@ from django.contrib.auth.models import User
 from .models import Receta
 
 # Create your views here.
-@login_required
-def feed(request):
-    receta = Receta.objects.all()
-    context = {'receta': receta}
-    return render(request,'feed.html',context)
+# @login_required
+# def feed(request):
+#     receta = Receta.objects.all()
+#     context = {'receta': receta}
+#     return render(request,'feed.html',context)
 
 class RecetaListView(ListView):
     model = Receta
     template_name = 'feed.html'
-    context_object_name = 'receta'
+    context_object_name = 'recetas'
     # ordering = ['-timestamp']
 
-class RecetaDetailView(ListView):
+class RecetaDetailView(DetailView):
     model = Receta
     template_name = 'receta_detail.html'
 
