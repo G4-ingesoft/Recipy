@@ -35,7 +35,7 @@ class Receta(models.Model):
         if self.image.name != "images/Receta_defect.png":
             img = Image.open(self.image.path)
             if img.height > 1440 or img.width > 1440:
-                img.thumbnail((1440,300))
+                img.thumbnail((1440,1440))
                 img.save(self.image.path)
             ##Decidir si subir la tumbnail supongo aqui se sube la thumbnail
             self.imgurl = upload_image_imgur(self.image.path)
