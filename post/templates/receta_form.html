@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% load static %} 
+
+{% block 'title' %}Feed{% endblock %}
+
+{% block 'additional_includes' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="column left" style="background-color:#aaa;">
+      <ul class="menu_izquierdo" id="main-menu-list" >
+        <li> 
+            <a href="#" class="prof-icon-btn" data-enabled="false"> 
+                <img src="{% static 'images/lastrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Últimas recetas
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/toprecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas en tendencia
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/randomrecipe.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas aleatorias
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/favoritesrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Recetas
+            </a>
+        </li>
+        <li>
+            <a href="#" data-enabled="false">
+                <img src="{% static 'images/rankingrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
+                Ranking Recipes
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="column middle">
+      <div class="card mb-3">
+        <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <h2>Create a New Recipe</h2>
+
+            <!-- Image Field -->
+            <div class="mb-3">
+                <label for="imageField" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageField" name="imageField">
+            </div>
+    
+            <!-- Text Fields -->
+            <div class="mb-3">
+                <label for="textField1" class="form-label">Text Field 1</label>
+                <input type="text" class="form-control" id="textField1" name="textField1">
+            </div>
+    
+            <div class="mb-3">
+                <label for="textField2" class="form-label">Text Field 2</label>
+                <input type="text" class="form-control" id="textField2" name="textField2">
+            </div>
+    
+            <div class="mb-3">
+                <label for="textField3" class="form-label">Text Field 3</label>
+                <input type="text" class="form-control" id="textField3" name="textField3">
+            </div>
+    
+            <div class="mb-3">
+                <label for="textField4" class="form-label">Text Field 4</label>
+                <input type="text" class="form-control" id="textField4" name="textField4">
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="column right" style="background-color:#ccc;">
+      <h2>Column 3</h2>
+      <p>Some text..</p>
+    </div>
+  </div>
+
+  {% endblock %}

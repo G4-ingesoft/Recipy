@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.models import User
 
 from .models import Receta
@@ -21,6 +21,11 @@ class RecetaListView(ListView):
 class RecetaDetailView(DetailView):
     model = Receta
     template_name = 'receta_detail.html'
+
+class RecetaCreateView(CreateView):
+    model = Receta
+    template_name = 'receta_form.html'
+    fields = ['name', 'image', 'description','ingredients','steps']
 
 
 #def search_recipes(request):
