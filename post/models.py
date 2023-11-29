@@ -20,7 +20,7 @@ class Receta(models.Model):
     description = models.TextField(default="Sin descripción.")
     ingredients = models.TextField(default="Sin ingredientes.")
     steps = models.TextField(default="Sin pasos de preparación.")
-    
+    # comentarios = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-timestamp']
@@ -42,3 +42,16 @@ class Receta(models.Model):
 
     def __str__(self):
         return f'{self.user.user.username}:{self.content}'
+'''    
+class Comentario(models.Model):
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='comentarios')
+    receta = models.ForeignKey(Receta,on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(default=timezone.now)
+    content = models.TextField()
+
+    class Meta:
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return f'{self.user.user.username}:{self.content}'
+'''

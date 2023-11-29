@@ -46,9 +46,9 @@
                       <h3 class="card-title">{{ receta.name }}</h3>
                       <!-- Title and author information -->
                   </div>
-                  <a href="#" class="prof-icon-btn">
-                    <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_300,h_300/https://www.corporatephotographerslondon.com/wp-content/uploads/2021/07/LinkedIn_profile_photo_sample_3-300x300.jpg" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
-                          <span class="font-weight-bold">{{ receta.user.username }}</span>
+                  <a href="{% url 'view_profile' receta.user.user.username %}" class="prof-icon-btn">
+                    <img src="{{ receta.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                          <span class="font-weight-bold">{{ receta.user.user.username }}</span>
                     </a>
                   </div>
                   <div class="image-frame">
@@ -112,18 +112,23 @@
                 </div>
               {% endfor %}
               {% for profile in profiles %}
-            <div class="col-md-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
-                        <!-- Agrega otros detalles del perfil si es necesario -->
-                        <div class="subcard">
-                            <a href="{% url 'view_profile' profile.username %}""{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
-                        </div>
-                    </div>
+                <div class="col-md-12 mb-4">
+                  <div class="card">
+                      <div class="card-body d-flex align-items-center">
+                          <!-- Add a circular profile picture -->
+                          <img src="{{profile.profile.imgurl}}" alt="Profile Picture" class="rounded-circle mr-2" style="width: 100px; height: 100px; margin-right: 20px;">
+                          <div>
+                              <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
+                              <h5 class="username mb-2">{{ profile.profile.description }}</h5>
+                              <!-- Agrega otros detalles del perfil si es necesario -->
+                              <div class="subcard">
+                                  <a href="{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-            </div>
-        {% endfor %}
+              {% endfor %}
             </div>
           </div>
         </div>

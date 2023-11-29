@@ -9,7 +9,7 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../static/css/layout.css" />
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
     <link rel="stylesheet"
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar navbar-expand-lg justify-content-center">
         <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'feed' %}">
                 <img src="https://i.imgur.com/Btpn29Y.png"
                      alt="Logo"
                      width="40"
@@ -76,14 +76,22 @@
                     </form>
                 </div>
                 <a onclick="toggleMenu()" class="rounded-button">
-                    <ion-icon name="person-sharp"></ion-icon>
+                    {% if user.is_authenticated %}
+                        <img src="{{ user.profile.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                    {% else %}
+                        <ion-icon name="person-sharp"></ion-icon>
+                    {% endif %}
                 </a>
 
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
                         <div class="user-info">
                             <ion-icon size="large" name="person-circle-sharp"></ion-icon>
-                            <h4>Acceder a Recipy</h4>
+                            {% if user.is_authenticated %}
+                                <h4>{{ user.username }}</h4>
+                            {% else %}
+                                <h4>Acceder a Recipy</h4>
+                            {% endif %}
                         </div>
                         <a href="#" class="sub-menu-link">
                             <!-- Añadir opciones -->
@@ -91,12 +99,21 @@
                             <p>Editar perfil</p>
                             <span>></span> -->
                         </a>
-                        <div class="row">
-                            <a class="btn btn-acc-redirect">Iniciar sesión</a>
-                        </div>
-                        <div class="row">
-                            <a class="btn btn-acc-redirect">Registrarte</a>
-                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="row">
+                                <a href="{% url 'view_profile' %}" class="btn btn-acc-redirect">Ver perfil</a>
+                            </div>
+                            <div class="row">
+                                <a href="{% url 'logout' %}" class="btn btn-acc-redirect">Cerrar sesión</a>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                <a href="{% url 'login' %}" class="btn btn-acc-redirect">Iniciar sesión</a>
+                            </div>
+                            <div class="row">
+                                <a href="{% url 'register' %}" class="btn btn-acc-redirect">Registrarte</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
