@@ -76,7 +76,7 @@
                         <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
                         <!-- Agrega otros detalles del perfil si es necesario -->
                         <div class="subcard">
-                            <a href="#" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                            <a href="{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
                         </div>
                     </div>
                 </div>
