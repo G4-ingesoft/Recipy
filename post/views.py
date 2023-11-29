@@ -30,13 +30,15 @@ class RecetaDetailView(ListView):
 
 def search_recipes(request):
     query = request.GET.get('q', '')  # Obtener el parámetro de búsqueda de la URL
-    user_recipes = Receta.objects.filter(name__icontains=query)
-    
+
     # Buscar perfiles si la consulta comienza con "@"
+    user_recipes = []
     profiles = []
     if query.startswith('@'):
         username_query = query[1:]
         profiles = User.objects.filter(username__icontains=username_query)
+    else:
+        user_recipes = Receta.objects.filter(name__icontains=query)
 
     context = {
         'user_recipes': user_recipes,

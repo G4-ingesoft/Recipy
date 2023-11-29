@@ -66,9 +66,9 @@
             <h3 class="card-title">{{ guia.name }}</h3>
             <!-- Title and author information -->
         </div>
-        <a href="#" class="prof-icon-btn">
-          <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_300,h_300/https://www.corporatephotographerslondon.com/wp-content/uploads/2021/07/LinkedIn_profile_photo_sample_3-300x300.jpg" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
-                <span class="font-weight-bold">{{ guia.user.username }}</span>
+        <a href="{% url 'view_profile' guia.user.user.username %}" class="prof-icon-btn">
+          <img src="{{ guia.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                <span class="font-weight-bold">{{ guia.user.user.username }}</span>
           </a>
         </div>
         <div class="image-frame">
