@@ -1,11 +1,4 @@
 {% extends "layout.html" %}
-
-{% block 'title' %}Feed{% endblock %}
-
-{% block 'additional_includes' %}
-    <link rel="stylesheet" type="text/css" href="../../static/css/feed.css" />
-{% endblock %}
-
 {% block content %}
 
 <div class="row">
@@ -138,3 +131,49 @@
   </div>
 
   {% endblock %}
+
+  {% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        {% for guia in receta %}
+        <div class="col-md-12 mb-4">
+            <div class="card" style="border: 2px solid #ff6f61; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #bbebd6;">
+                <div class="row">
+                    <!-- Imagen (más pequeña) -->
+                    <div class="col-md-3">
+                        <img src="{{ guia.image.url }}" class="img-fluid" style="max-width: 100%; height: auto; border-top-left-radius: 8px; border-bottom-left-radius: 8px;" alt="...">
+                    </div>
+
+                    <!-- Detalles de la receta -->
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="username mb-2" style="color: #2f4f4f;">{{ guia.user.username }}</h5>
+                            <h5 class="username mb-4" style="color: #2f4f4f;">{{ guia.name }}</h5>
+
+                            <!-- Subcard para el tiempo -->
+                            <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                                <i class="fas fa-clock mr-2" style="color: #696969;"></i>
+                                <time datetime="{{ guia.timestamp }}" style="color: #696969;">{{ guia.timestamp }}</time>
+                            </div>
+
+                            <!-- Subcard para el contenido -->
+                            <div class="subcard mb-3" style="border: 2px solid #4CAF50; border-radius: 8px; padding: 10px;">
+                                <p style="color: #2f4f4f;">{{ guia.content }}</p>
+                            </div>
+
+                            <!-- Subcard para el botón -->
+                            <div class="subcard">
+                                <a href="#" class="btn btn-warning btn-sm mt-3">Seleccionar receta</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
