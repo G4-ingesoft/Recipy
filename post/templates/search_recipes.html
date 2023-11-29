@@ -46,9 +46,9 @@
                       <h3 class="card-title">{{ receta.name }}</h3>
                       <!-- Title and author information -->
                   </div>
-                  <a href="#" class="prof-icon-btn">
-                    <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_300,h_300/https://www.corporatephotographerslondon.com/wp-content/uploads/2021/07/LinkedIn_profile_photo_sample_3-300x300.jpg" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
-                          <span class="font-weight-bold">{{ receta.user.username }}</span>
+                  <a href="{% url 'view_profile' receta.user.user.username %}" class="prof-icon-btn">
+                    <img src="{{ receta.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                          <span class="font-weight-bold">{{ receta.user.user.username }}</span>
                     </a>
                   </div>
                   <div class="image-frame">
@@ -116,9 +116,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="username mb-2" style="color: #2f4f4f;">@{{ profile.username }}</h5>
+                        {% load profiles.models %}
+                        {% with user_profile=Profile.objects.filter(user=profile).first() %}
+                          <p>{{ user_profile.description }}</p>
+                        {% endwith %}
                         <!-- Agrega otros detalles del perfil si es necesario -->
                         <div class="subcard">
-                            <a href="{% url 'view_profile' profile.username %}""{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
+                            <a href="{% url 'view_profile' profile.username %}" class="btn btn-warning btn-sm mt-3">Ver perfil</a>
                         </div>
                     </div>
                 </div>
