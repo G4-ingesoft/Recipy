@@ -1,0 +1,141 @@
+.recipe-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recipe-card {
+    margin-bottom: 20px;
+}
+
+
+.recipe-card-body {
+padding: 20px;
+background-color: #bbebd6; /* Cambia el color a negro */
+color: black; /* Cambia el color del texto a blanco o el color que prefieras */
+}
+
+.recipe-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;  
+}
+
+
+.image-container img {
+    border-radius: 50%; /* Hace que la imagen tenga bordes circulares */
+    vertical-align: middle; 
+
+
+}
+
+.card-body { /* cuerpo del*/
+background-color: #bbebd6;
+
+color: #726969;
+padding: 10px;
+text-align: left;
+font-weight: bold
+}
+
+
+.card-header { /* cabeza del comentario*/
+background-color: #ffffff;
+color: rgb(0, 0, 0);
+padding: 10px;
+
+text-align: left;
+font-weight: bold
+}
+
+.header-content {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.gray-text {
+color:#000000;
+}
+
+
+.comment { /* clase para cada comentario*/
+border: 1px solid #ddd;
+margin: 10px;
+padding: 10px;
+background-color: #bbebd6;
+
+
+align-items: center; 
+border-radius: 10px;
+}
+
+.comment-container {/* container del borde gris de afuera para todos los comentarios */
+display: flex;
+flex-direction: column; /* Apila los comentarios verticalmente */
+border: 1px solid #ddd;
+margin: 10px;
+padding: 10px;
+background-color: #d9d9d9;
+
+border-radius: 10px;
+
+width: 600px;
+}
+
+.image-container img {
+border-radius: 50%; /* Hace que la imagen tenga bordes circulares */
+vertical-align: middle; 
+
+
+}
+
+
+.comment .card-header {
+display: flex;
+align-items: center;
+}
+
+.comment .image-container {
+margin-right: 10px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .header-content {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.comment .bold-text {
+margin-right: 5px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .gray-text {
+color: #808080; /* Color gris */
+font-size: 0.8em; /* Tamaño de fuente más pequeño */
+margin-right: 5px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .small-text {
+color: #808080;
+font-size: 0.8em;
+}
+
+
+.comment-container {
+max-width: 600px; /* Adjust max-width as needed */
+}
+
+.comment textarea {
+width: 100%;
+resize: none;
+background-color: inherit;
+max-height: 150px; /* Set a maximum height for the textarea */
+overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.post-container {
+max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+text-align: center;
+}

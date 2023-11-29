@@ -1,0 +1,124 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Establece la altura del cuerpo al 100% de la ventana visible */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+}
+
+.post-container {
+    max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+    text-align: center;
+}
+
+.card {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    max-width: 300px;
+    margin: auto;
+
+    border-radius: 10px;
+}
+
+.card-header { /* cabeza del comentario*/
+    background-color: #b4b4b4;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+
+    text-align: left;
+    font-weight: bold
+}
+
+.card-body { /* cuerpo del*/
+    background-color: #d9d9d9;
+
+    color: #726969;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold
+}
+
+.gray-text {
+    color:#000000;
+}
+
+.comment-container {/* container del borde gris de afuera para todos los comentarios */
+    display: flex;
+    flex-direction: column; /* Apila los comentarios verticalmente */
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    background-color: #d9d9d9;
+
+    border-radius: 10px;
+
+    width: 600px;
+}
+
+.comment { /* clase para cada comentario*/
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b4b4b4;
+
+
+    align-items: center; 
+    border-radius: 10px;
+}
+
+.image-container img {
+    border-radius: 50%; /* Hace que la imagen tenga bordes circulares */
+    vertical-align: middle; 
+
+
+}
+.comment .card-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment .image-container {
+    margin-right: 10px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.comment .bold-text {
+    margin-right: 5px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .gray-text {
+    color: #808080; /* Color gris */
+    font-size: 0.8em; /* Tamaño de fuente más pequeño */
+    margin-right: 5px; /* Ajusta el margen según tus preferencias */
+}
+
+.comment .small-text {
+    color: #808080;
+    font-size: 0.8em;
+}
+
+
+.comment-container {
+    max-width: 600px; /* Adjust max-width as needed */
+}
+
+.comment textarea {
+    width: 100%;
+    resize: none;
+    background-color: inherit;
+    max-height: 150px; /* Set a maximum height for the textarea */
+    overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.btn {
+    border: 2px solid #000; /* Cambia el color del borde según tu preferencia */
+    margin: 10px;
+}

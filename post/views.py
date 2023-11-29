@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.models import User
 
+from comment.models import Comentario
+from profiles.models import Profile
+
+
 from .models import Receta
 
 # Create your views here.
@@ -46,3 +50,29 @@ def search_recipes(request):
     }
 
     return render(request, 'search_recipes.html', context)
+
+
+def select_recipe(request, recipe_id):
+    # Obtener la receta específica por su ID
+    recipe = Receta.objects.get(pk=recipe_id)
+
+    # Pasar la receta al contexto
+    ingredients_list = recipe.ingredients.split('\n')
+    
+    context =  {'recipe': recipe, 'ingredients_list': ingredients_list}
+
+    # Renderizar la plantilla con el contexto
+    return render(request, 'select_recipe.html', context)
+
+
+def view_comments(request,recipe_id):
+    recipe = Receta.objects.get(pk=recipe_id)
+
+    perfil_usuario = Profile.objects.get(user=request.user)
+
+
+    comentarios = Comentario.objects.filter(receta=recipe)
+
+    context = {'comentarios':comentarios,'perfil_usuario':perfil_usuario}
+
+    return render(request,'comments.html',context)

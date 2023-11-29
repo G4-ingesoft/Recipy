@@ -1,0 +1,106 @@
+
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%  static 'css/select_recipe.css'%}">
+
+        <script>
+
+        var textarea = document.querySelector('.content2 .card-body'); // Cambiado para reflejar el bloque específico
+        var sendButton = document.querySelector('.btn');
+        
+        // Initially hide the send button
+        sendButton.style.display = 'none';
+        
+        // Add an event listener to the textarea
+        textarea.addEventListener('input', function() {
+            // If the textarea is not empty, display the send button
+            if(textarea.textContent.trim() !== '') {
+                sendButton.style.display = 'block';
+            } else {
+                // Otherwise, hide the send button
+                sendButton.style.display = 'none';
+            }
+        });
+        
+        
+        </script>
+
+
+
+    
+
+
+</head>
+
+
+
+<body>
+    <div class="post-container">
+        <div class="comment-container">
+            <div class="comment">
+                <div class="card-header">
+                    <div class="image-container">
+                        <img src="{{perfil_usuario.imgurl }}" alt="Profile Image" width="40" height="40" />
+
+                    </div>
+                    <div class="header-content">
+                        <span class="bold-text">{{ perfil_usuario.user.username }}</span>
+        
+                    </div>
+                </div>
+
+                
+                <div class="card-body" contenteditable="true" onclick="this.innerHTML=''">
+                    Realiza un comentario a esta receta!
+                    
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                    </svg>
+                    publicar
+                </button>
+            </div>
+            
+        {% for comentario in comentarios %}
+            <div class="comment">
+                <div class="card-header">
+                    <div class="image-container">
+                        <img src="{{ comentario.user.imgurl }}" alt="Profile Image" width="40" height="40" />
+                    </div>
+                    <div class="header-content">
+                        <span class="bold-text">{{ comentario.user.user.username }}</span>
+                        <span class="gray-text small-text">{{ comentario.creacion }}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{ comentario.text }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+
+            
+
+
+
+
+</html>
+
+
+
+{% endblock %}

@@ -83,16 +83,17 @@
         <div class="card-body" style="display: flex; align-items: center; justify-content: center;">
 
           <div class="btn-div" style="padding: 20px;">
-              <a href="#" class="btn-icon">
+              <a href="{% url 'view_comments' guia.id %}" class="btn-icon">
                   <i class="fa-solid fa-comment fa-2xl"></i>
               </a>
           </div>
-
           <div class="btn-div" style="padding: 20px;">
-            <a href="#" class="btn-icon">
-              <i class="fa-solid fa-eye fa-2xl"></i>
+            <!-- Supongamos que recipe es un objeto que tiene un atributo 'id' -->
+            <a href="{% url 'select_recipe' guia.id %}" class="btn-icon">
+                <i class="fa-solid fa-eye fa-2xl"></i>
             </a>
         </div>
+        
           
       
           <div class="ratings" style="margin: 0 20px;">
