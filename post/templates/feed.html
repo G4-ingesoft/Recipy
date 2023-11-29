@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
 
+{% load static %} 
+
 {% block 'title' %}Feed{% endblock %}
 
 {% block 'additional_includes' %}
-    <link rel="stylesheet" type="text/css" href="../../static/css/feed.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feed.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -13,31 +15,31 @@
       <ul class="menu_izquierdo" id="main-menu-list" >
         <li>
             <a href="#" class="prof-icon-btn" data-enabled="false"> 
-                <img src="/images/lastrecipes.png" width="30" height="30" loading="lazy" alt="upload meme icon">
+                <img src="{% static 'images/lastrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
                 Últimas recetas
             </a>
         </li>
         <li>
             <a href="#" data-enabled="false">
-                <img src="/images/toprecipes.png" width="30" height="30" loading="lazy" alt="upload meme icon">
+                <img src="{% static 'images/toprecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
                 Recetas en tendencia
             </a>
         </li>
         <li>
             <a href="#" data-enabled="false">
-                <img src="/images/randomrecipe.png" width="30" height="30" loading="lazy" alt="upload meme icon">
+                <img src="{% static 'images/randomrecipe.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
                 Recetas aleatorias
             </a>
         </li>
         <li>
             <a href="#" data-enabled="false">
-                <img src="/images/favoritesrecipes.png" width="30" height="30" loading="lazy" alt="upload meme icon">
+                <img src="{% static 'images/favoritesrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
                 Recetas
             </a>
         </li>
         <li>
             <a href="#" data-enabled="false">
-                <img src="/images/rankingrecipes.png" width="30" height="30" loading="lazy" alt="upload meme icon">
+                <img src="{% static 'images/rankingrecipes.png' %}" width="30" height="30" loading="lazy" alt="upload meme icon">
                 Ranking Recipes
             </a>
         </li>
@@ -70,8 +72,8 @@
           </a>
         </div>
         <div class="image-frame">
-          <div class="blur" style="background-image: url('{{ guia.image.url }}')"></div>
-          <img src="{{ guia.image.url }}" />
+          <div class="blur" style="background-image: url('{{ guia.imgurl }}')"></div>
+          <img src="{{ guia.imgurl }}" />
         </div>
         <div class="card-tags text-center">
           <span class="badge badge-recipe">Receta</span>

@@ -6,12 +6,15 @@ from django.utils import timezone
 from datetime import timedelta
 
 from profiles.models import Profile
+from utilities.imgur_api import upload_image_imgur
+from PIL import Image
 
 # Create your models here.
 class Receta(models.Model):
     user = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='receta')
     name = models.CharField(default="no name", max_length=100)
     image = models.ImageField(default='images/Receta_defect.png')
+    imgurl = models.CharField(default="no url",max_length=255)
     timestamp = models.DateTimeField(default=timezone.now)
     prep_time = models.DurationField(default=timedelta(hours=0, minutes=00)) # Tiempo de preparación, tipo 1:00:30
     description = models.TextField(default="Sin descripción.")
@@ -21,6 +24,21 @@ class Receta(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Antes de guardar, convierte la imagen y almacénala en el campo image
+        print("Receta save, img = "+str(self.image))
+        ###SOLUCIÓN TEMPORAL, LO IDEAL ES TENER SAVES DIFERENTES PARA UPDATE Y PARA CREATE, ASI SE EVITA ESTO
+        if self.image.name != "images/Receta_defect.png":
+            img = Image.open(self.image.path)
+            if img.height > 300 or img.width > 300:
+                img.thumbnail((300,300))
+                img.save(self.image.path)
+            ##Decidir si subir la tumbnail supongo aqui se sube la thumbnail
+            self.imgurl = upload_image_imgur(self.image.path)
+            ##Es necesario subirlo dos veces
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.user.user.username}:{self.content}'
