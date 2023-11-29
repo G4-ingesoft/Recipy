@@ -10,6 +10,12 @@
 
 {% block content %}
 
+<style>
+  .card-title {
+    text-decoration: none;
+  }
+</style>
+
 <div class="row">
     <div class="column left" style="background-color:#aaa;">
       <ul class="menu_izquierdo" id="main-menu-list" >
@@ -51,29 +57,35 @@
         <div class="card-body text-center">
             <h5 class="card-title">¿Qué deliciosa idea cocinas hoy?...</h5>
             <p class="card-text">Sazona tus pensamientos con el toque irresistible de la cocina. ¡Inspira, comparte y disfruta!</p>
-            <a href="#" class="btn btn-primario">
+            {% if user.is_authenticated %}
+              <a href="{% url 'receta_create' %}" class="btn btn-primario">
+            {% else %}
+              <a href="{% url 'login' %}" class="btn btn-primario">
+            {% endif %}
               <i class="fa-solid fa-circle-plus fa-lg"></i>
               Crear receta
             </a>
         </div>
     </div>
     
-    {% for guia in receta %}
+    {% for receta in recetas %}
       <div class="card mb-3">
         <div class="card-header">
           <div class="d-flex align-items-center">
             <!-- Add a circular profile picture -->
-            <h3 class="card-title">{{ guia.name }}</h3>
+            <h3> <a href="{% url 'receta_detail' receta.pk %}" class="card-title">{{ receta.name }} </a></h3>
             <!-- Title and author information -->
         </div>
-        <a href="{% url 'view_profile' guia.user.user.username %}" class="prof-icon-btn">
-          <img src="{{ guia.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
-                <span class="font-weight-bold">{{ guia.user.user.username }}</span>
+        <a href="{% url 'view_profile' receta.user.user.username %}" class="prof-icon-btn">
+          <img src="{{ receta.user.imgurl }}" alt="Author's Profile" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                <span class="font-weight-bold">{{ receta.user.user.username }}</span>
           </a>
         </div>
         <div class="image-frame">
-          <div class="blur" style="background-image: url('{{ guia.imgurl }}')"></div>
-          <img src="{{ guia.imgurl }}" />
+          <div class="blur" style="background-image: url('{{ receta.imgurl }}')"></div>
+          <a href="{% url 'receta_detail' receta.pk %}">
+            <img src="{{ receta.imgurl }}" />
+          </a>
         </div>
         <div class="card-tags text-center">
           <span class="badge badge-recipe">Receta</span>
@@ -125,7 +137,7 @@
         <div class="card-footer text-body-secondary">
           <p class="card-text">
             <small class="text-body-secondary"
-              >{{ guia.timestamp }}</small
+              >{{ receta.timestamp }}</small
             >
           </p>
         </div>

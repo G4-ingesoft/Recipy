@@ -237,6 +237,7 @@ ul {
     border-radius: 40px;
     overflow: hidden;
     transition: max-height 0.2s;
+    z-index: 999;
 }
 
     .sub-menu-wrap.open-menu {

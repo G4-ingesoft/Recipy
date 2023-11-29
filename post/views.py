@@ -1,26 +1,36 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.models import User
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Receta
 
 # Create your views here.
-@login_required
-def feed(request):
-    receta = Receta.objects.all()
-    context = {'receta': receta}
-    return render(request,'feed.html',context)
+# @login_required
+# def feed(request):
+#     receta = Receta.objects.all()
+#     context = {'receta': receta}
+#     return render(request,'feed.html',context)
 
 class RecetaListView(ListView):
     model = Receta
     template_name = 'feed.html'
-    context_object_name = 'receta'
+    context_object_name = 'recetas'
     # ordering = ['-timestamp']
 
-class RecetaDetailView(ListView):
+class RecetaDetailView(DetailView):
     model = Receta
     template_name = 'receta_detail.html'
+
+class RecetaCreateView(LoginRequiredMixin, CreateView):
+    model = Receta
+    template_name = 'receta_form.html'
+    fields = ['image', 'name', 'description','ingredients','steps']
+
+    def form_valid(self, form):
+        print("Añadiendo receta")
+        form.instance.user = self.request.user.profile
+        return super().form_valid(form)
 
 
 #def search_recipes(request):

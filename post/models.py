@@ -9,6 +9,8 @@ from profiles.models import Profile
 from utilities.imgur_api import upload_image_imgur
 from PIL import Image
 
+from django.urls import reverse
+
 # Create your models here.
 class Receta(models.Model):
     user = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='receta')
@@ -32,8 +34,8 @@ class Receta(models.Model):
         ###SOLUCIÓN TEMPORAL, LO IDEAL ES TENER SAVES DIFERENTES PARA UPDATE Y PARA CREATE, ASI SE EVITA ESTO
         if self.image.name != "images/Receta_defect.png":
             img = Image.open(self.image.path)
-            if img.height > 300 or img.width > 300:
-                img.thumbnail((300,300))
+            if img.height > 1440 or img.width > 1440:
+                img.thumbnail((1440,1440))
                 img.save(self.image.path)
             ##Decidir si subir la tumbnail supongo aqui se sube la thumbnail
             self.imgurl = upload_image_imgur(self.image.path)
@@ -42,6 +44,10 @@ class Receta(models.Model):
 
     def __str__(self):
         return f'{self.user.user.username}:{self.content}'
+    
+    def get_absolute_url(self):
+        return reverse("receta_detail", kwargs={"pk": self.pk})
+    
 '''    
 class Comentario(models.Model):
     user = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='comentarios')
