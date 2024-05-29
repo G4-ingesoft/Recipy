@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Receta
@@ -27,6 +27,16 @@ class RecetaCreateView(LoginRequiredMixin, CreateView):
     template_name = 'receta_form.html'
     fields = ['image', 'name', 'description','ingredients','steps']
 
+    def form_valid(self, form):
+        print("Añadiendo receta")
+        form.instance.user = self.request.user.profile
+        return super().form_valid(form)
+
+class RecetaUpdateView(LoginRequiredMixin, UpdateView):
+    model = Receta
+    template_name = 'receta_update.html'
+    fields = ['image', 'name', 'description','ingredients','steps']
+    
     def form_valid(self, form):
         print("Añadiendo receta")
         form.instance.user = self.request.user.profile
