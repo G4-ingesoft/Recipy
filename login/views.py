@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import login
 
+
 # Create your views here.
 
 
@@ -24,34 +25,39 @@ from django.contrib.auth import login
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-        agree_terms = request.POST.get('agree_terms', False)
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            email = request.POST['email']
+            password = request.POST['password']
+            confirm_password = request.POST['confirm_password']
+            agree_terms = request.POST.get('agree_terms', False)
 
-        # Check if passwords match
-        if password != confirm_password:
-            messages.error(request, 'Las contrasenas no coinciden')
-            return redirect('register')  # Redirect to the registration page
+            # Check if passwords match
+            if password != confirm_password:
+                messages.error(request, 'Las contrasenas no coinciden')
+                return redirect('register')  # Redirect to the registration page
 
-        # Check if the terms and conditions are agreed
-        if not agree_terms:
-            messages.error(request, 'Please agree to the terms and conditions.')
-            return redirect('register')  # Redirect to the registration page
+            # Check if the terms and conditions are agreed
+            if not agree_terms:
+                messages.error(request, 'Please agree to the terms and conditions.')
+                return redirect('register')  # Redirect to the registration page
 
-        # Create a new user
-        try:
-            user = User.objects.create_user(username=username, email=email, password=password)
-            user.save()
-            messages.success(request, 'Account created successfully. You can now log in.')
+            # Create a new user
+            try:
+                user = User.objects.create_user(username=username, email=email, password=password)
+                user.save()
+                messages.success(request, 'Account created successfully. You can now log in.')
 
-            login(request,user)
-            return redirect('create_profile')  # Redirect to the login page
-        except Exception as e:
-            messages.error(request, f'Error creating account: {e}')
+                login(request,user)
+                return redirect('create_profile')  # Redirect to the login page
+            except Exception as e:
+                messages.error(request, f'Error creating account: {e}')
+        else:
+            messages.error(request, 'Error creating account. Please try again.')
 
-    return render(request, 'login/register.html')  # Adjust the template path accordingly
+    form = UserRegistrationForm()
+    return render(request, 'login/register.html', {'form': form})  # Adjust the template path accordingly
 
 @login_required
 def feed(request):
