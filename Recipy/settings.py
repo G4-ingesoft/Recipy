@@ -29,6 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ReCaptcha settings
+RECAPTCHA_PUBLIC_KEY = '6LfyLe0pAAAAAFU85UsRnlOA8JfaFbK-nqNwuhnT'
+RECAPTCHA_PRIVATE_KEY = '6LfyLe0pAAAAACzg_adQuGvzUrO0o5Ws_nzSu0_K'
+
+## RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'}
 
 # Application definition
 
@@ -42,6 +47,7 @@ INSTALLED_APPS = [
     'login',
     'profiles',
     'post',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -82,21 +88,21 @@ WSGI_APPLICATION = 'Recipy.wsgi.application'
 pymysql.install_as_MySQLdb()
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'railway',
-       'USER':'root',
-       'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
-       'HOST':'roundhouse.proxy.rlwy.net',
-       'PORT':'24919',
-   }
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'railway',
+#        'USER':'root',
+#        'PASSWORD':'CCE3h5HEbf4a53dCeE23aDgfa-d154bb',
+#        'HOST':'roundhouse.proxy.rlwy.net',
+#        'PORT':'24919',
+#    }
 
-#     'ENGINE': 'django.db.backends.mysql',
-#     'NAME':'RECIPY_DATABASE',
-#     'USER':'root',
-#     'PASSWORD':'MI_CONTRASEÑA',
-#     'HOST':'127.0.0.1',
-#     'PORT':'3306',
-#  }
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME':'RECIPY_DATABASE',
+    'USER':'root',
+    'PASSWORD':'MY_PASSWORD',
+    'HOST':'127.0.0.1',
+    'PORT':'3306',
+ }
 }
 
 # Password validation
